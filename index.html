@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Muhammad Sameer — Portfolio</title>
+
+
+  <link rel="stylesheet" href="style.css" />
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Portfolio of Muhammad Sameer — Software Engineer" />
+</head>
+<body class="theme-dark">
+  <header>
+    <nav>
+      <div class="brand">
+        <span class="logo" aria-hidden="true">P</span>
+        <span class="n">PortFolio</span>
+      </div>
+
+      <ul class="nav-links" aria-label="Main navigation">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#project">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="controls">
+        <form id="searchForm" role="search">
+          <input type="search" name="query" placeholder="search here..." aria-label="Search" />
+          <button type="submit">Go</button>
+        </form>
+      </div>
+      
+
+
+        <button id="themeToggle" class="toggle-btn" title="Toggle light/dark" aria-pressed="false">🌙</button>
+
+
+        <a id="cvAnchor" href="assets/Muhammad Sameer cv.pdf" download class="hero-btn small" aria-label="Download CV">Download CV</a>
+      </div>
+
+      <div class="time" aria-live="polite">
+        <p id="time"></p>
+        <p id="day"></p>
+      </div>
+    </nav>
+  </header>
+
+
+  <section class="hero" id="home" aria-label="home">
+    <div class="hero-content">
+      <h1>Muhammad Sameer</h1>
+      <hr />
+      <p class="type">Software Engineer | Future Full Stack Developer</p>
+
+      <button id="downloadCVBtn" class="hero-btn" aria-label="Download CV button">Download CV</button>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="about" aria-label="about me">
+      <h1>About Me</h1>
+      <h2>Intro</h2>
+      <p>Assalamualaikum, I am an undergraduate <strong>Software Engineering</strong> student currently studying under the supervision of Bahria University.</p>
+      <hr />
+      <h2>Aim</h2>
+      <p>Software Engineering isn't just a degree or a paper, but it is an <strong>Emotion</strong>, <strong>Dream</strong>, and a <strong>Passion</strong> of every student who wants to be connected with Technology. My aim is to <strong>innovate</strong> something unique and useful for these students.</p>
+      <hr />
+      <h2>Qualification</h2>
+      <p><strong>BSE</strong> 2028 (expected completion)</p>
+      <p><strong>Internship</strong> at CodeAlpha</p>
+    </section>
+
+    <section id="project" aria-label="projects">
+      <h1>Projects</h1>
+
+      
+      <div class="bubble-container" aria-hidden="true"></div>
+
+
+      <div id="project-list" class="project-grid">
+        <div class="project-card">
+          <h3>Khana Shana</h3>
+          <p>Typical authentic Pakistani online restaurant service...</p>
+        </div>
+        <div class="project-card">
+          <h3>PAint Application</h3>
+          <p>A Simple, Easy and Ready to use application...</p>
+        </div>
+        <div class="project-card">
+          <h3>GPA Calculator</h3>
+          <p>Students always think how can we calculate our GPA...</p>
+        </div>
+        <div class="project-card">
+          <h3>Smart Expense Tracker</h3>
+          <p>Now keeping track of your money is easy...</p>
+        </div>
+        <div class="project-card">
+          <h3>Grocery Management System</h3>
+          <p>No need of using typical paper and pen for grocery...</p>
+        </div>
+        <div class="project-card">
+          <h3>Bot Management System</h3>
+          <p>Tired of waiting for token renewal...</p>
+        </div>
+        <div class="project-card">
+          <h3>GIGA GIT SPACE</h3>
+          <p>Coming soon...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <section id="contact" aria-label="contact">
+    <h1>Contact Us</h1>
+
+    <form id="contactForm" autocomplete="on">
+      <input type="text" id="name" name="name" placeholder="Enter Name" required>
+      <input type="email" id="email" name="email" placeholder="Enter Email" required>
+      <textarea id="message" name="message" placeholder="Enter Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Portfolio. All rights reserved by GGS</p>
+  </footer>
+
+>
+  <button id="chatFab" aria-label="Open chat">💬</button>
+
+  <div id="chatWidget" class="hidden" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+    <div class="chat-header">
+      <h3 id="chatTitle">GGS Assistant</h3>
+      <button id="chatClose" aria-label="Close chat">✕</button>
+    </div>
+
+    <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+
+    <form id="chatForm" class="chat-input" aria-label="Chat form">
+      <input id="chatText" type="text" placeholder="Ask anything about my projects…" autocomplete="off" required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+
+  <script src="script.js" defer></script>
+</body>
+</html>

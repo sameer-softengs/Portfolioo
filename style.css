@@ -1,0 +1,364 @@
+/* ================================
+   THEME TOKENS
+==================================*/
+:root {
+  --Darkgreen: #006400;
+  --white: #ffffff;
+  --golden: #FFD700;
+  --torquise: #40E0D0; /* keep spelling to match your code */
+  --sand: #F5DEB3;
+  --grey: #F4F4F4;
+  --black: #1A1A1A;
+
+  /* default to dark */
+  --text: #e5e7eb;
+  --surface: #0f1720;
+  --surface-2: #0b1220;
+  --muted: #94a3b8;
+  --accent: var(--golden);
+  --card: rgba(255,255,255,0.08);
+  --card-text: #e5e7eb;
+  --border: rgba(255,255,255,0.12);
+}
+
+/* Light theme (toggle via <body class="theme-light">) */
+body.theme-light {
+  --text: #0f1720;
+  --surface: #f7f9fb;
+  --surface-2: #ffffff;
+  --muted: #334155;
+  --card: rgba(255,255,255,0.95);
+  --card-text: #1f2937;
+  --border: rgba(0,0,0,0.12);
+}
+
+/* ================================
+   RESET & BASE
+==================================*/
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--surface);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ================================
+   HEADER / NAV
+==================================*/
+header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(7px);
+  border-bottom: 1px solid var(--border);
+}
+body.theme-light header { background: rgba(255,255,255,0.6); }
+
+nav {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; gap: 16px;
+}
+
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 800; letter-spacing: .5px; }
+.brand .logo {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(72deg, var(--torquise), var(--Darkgreen));
+  color: var(--white);
+}
+.brand .n { color: var(--golden); }
+
+.nav-links { list-style: none; display: flex; gap: 14px; }
+.nav-links a {
+  padding: 6px 10px; border-radius: 6px; font-size: .95rem;
+  transition: background .25s ease;
+}
+.nav-links a:hover { background: rgba(255,255,255,.08); }
+body.theme-light .nav-links a:hover { background: rgba(0,0,0,.06); }
+
+.controls { display: flex; align-items: center; gap: 8px; }
+.controls form { display: flex; align-items: center; gap: 6px; }
+.controls input[type="search"]{
+  padding: 7px 10px; border-radius: 6px; outline: none;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+}
+body.theme-light .controls input[type="search"]{
+  background: rgba(0,0,0,.03);
+}
+
+.controls button {
+  padding: 7px 10px; border-radius: 6px; border: none; cursor: pointer;
+  background: linear-gradient(90deg, var(--sand), var(--torquise));
+  font-size: .9rem; color: #1f2937; font-weight: 700;
+}
+
+/* Theme toggle button */
+.toggle-btn {
+  padding: 7px 10px; border-radius: 6px;
+  background:  var(--torquise);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Small clock */
+.time {
+  text-align: center; padding: 4px 6px; border-radius: 6px;
+  background: var(--Darkgreen); color: var(--white);
+  font-size: .75rem; line-height: 1.2;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  white-space: nowrap;
+}
+
+/* ================================
+   HERO
+==================================*/
+.hero {
+  position: relative; height: 100vh; width: 100%;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  margin-top: 64px; /* space for fixed header */
+  background: radial-gradient(80% 60% at 50% 40%, #0b1220 0%, #060a12 60%, #020408 100%);
+}
+body.theme-light .hero {
+  background: radial-gradient(80% 60% at 50% 40%, #e8f0ff 0%, #f7fbff 60%, #ffffff 100%);
+}
+.hero::before { content:""; position: absolute; inset: 0; background: rgba(0,0,0,.22); z-index: 1; }
+body.theme-light .hero::before { background: rgba(255,255,255,.15); }
+
+.hero-content { position: relative; z-index: 2; max-width: 1000px; padding: 20px; }
+.hero h1{
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  background: linear-gradient(to right, var(--sand), var(--sand), var(--golden), var(--golden));
+  background-size: 200%; background-clip: text; -webkit-background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  text-transform: uppercase; letter-spacing: 1px;
+  animation: heroGradient 3s linear infinite;
+  text-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+@keyframes heroGradient { to { background-position: 200%; } }
+
+.hero .type{
+  overflow: hidden; border-right: .15em solid orange; white-space: nowrap;
+  margin: 8px auto 18px; letter-spacing: .1em;
+  max-width: 80ch;
+  animation: typing 5s steps(40,end), blink .75s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { from,to{border-color:transparent} 50%{border-color:orange} }
+
+.hero-btn{
+  display: inline-block;
+  padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer;
+  background: linear-gradient(90deg, var(--sand), var(--golden));
+  color: #1f2937; font-weight: 800;
+  transition: transform .2s ease, opacity .3s ease;
+}
+.hero-btn:hover{ transform: scale(1.05); opacity:.9; }
+.hero-btn.small{ font-size:.9rem; padding:8px 12px; }
+
+/* ================================
+   GENERIC SECTIONS
+==================================*/
+section { padding: 80px 22px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+section h1 { color: var(--accent); text-decoration: underline; text-underline-offset: 6px; }
+
+/* ================================
+   ABOUT
+==================================*/
+#about{
+  width: 100%; min-height: 100vh;
+  background: radial-gradient(80% 60% at 50% 40%, #0b1220 0%, #060a12 60%, #020408 100%);
+  color: #fff; padding: 40px; text-align: center;
+  transition: background .8s ease, transform .5s ease;
+}
+#about h1{ font-size: 3rem; }
+#about h2{ font-size: 1.75rem; color: var(--golden); margin-top: 16px; }
+#about p{ max-width: 800px; margin: 10px 0; }
+#about hr{ width: 60%; height: 2px; border: 0; background: var(--golden); margin: 18px auto; }
+
+/* ================================
+   PROJECTS + MEMORY BUBBLES
+==================================*/
+#project{
+  position: relative; overflow: hidden;
+  width: 100%;
+  background: linear-gradient(135deg, var(--surface-2), #050a15);
+}
+body.theme-light #project{
+  background: linear-gradient(135deg, #e6f0ff, #ffffff);
+}
+
+/* bubble layer sits behind cards */
+.bubble-container{
+  position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none;
+}
+
+/* cards container (front) */
+#project-list{
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 22px; max-width: 1100px; margin: 0 auto;
+}
+
+/* cards */
+.project-card{
+  background: var(--card); color: var(--card-text);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+  backdrop-filter: blur(6px);
+}
+body.theme-light .project-card{ box-shadow: 0 8px 18px rgba(0,0,0,.12); }
+.project-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,.28); }
+.project-card h3{ margin: 0 0 8px; color: var(--accent); font-size: 1.25rem; }
+.project-card p{ color: inherit; }
+
+/* ------- BUBBLES (behind) ------- */
+/* Each bubble element is absolutely positioned. 
+   JS should create .bubble elements (with an <img>) inside .bubble-container. */
+.bubble{
+  position: absolute; bottom: -160px; left: 0;
+  border-radius: 50%; overflow: hidden;
+  opacity: .95; /* high visibility */
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.28));
+  /* Parent handles vertical rise; child (<img>) handles horizontal drift */
+  animation: rise var(--rise, 12s) linear forwards;
+  /* subtle glossy rim */
+  box-shadow:
+    inset 0 0 22px rgba(255,255,255,.25),
+    inset 8px 14px 28px rgba(255,255,255,.12);
+}
+
+/* The picture inside the bubble (low opacity for memory feel) */
+.bubble img{
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+  opacity: .85;
+  animation: drift var(--driftDur, 6s) ease-in-out infinite alternate;
+  transform: translateX(0);
+}
+
+/* Vertical float + fade */
+@keyframes rise{
+  0%   { transform: translateY(0) scale(.75); opacity: .95; }
+  40%  { transform: translateY(-320px) scale(.95); opacity: .85; }
+  75%  { transform: translateY(-640px) scale(1.08); opacity: .55; }
+  100% { transform: translateY(-900px) scale(1.18); opacity: 0; }
+}
+
+/* Gentle horizontal meander to simulate water drift */
+@keyframes drift{
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-12px); }
+  50%  { transform: translateX(10px); }
+  75%  { transform: translateX(-8px); }
+  100% { transform: translateX(14px); }
+}
+
+
+/* ================================
+   CONTACT
+==================================*/
+#contact{
+  background: linear-gradient(135deg, var(--Darkgreen), var(--torquise));
+  padding: 60px 20px; text-align: center; color: var(--white);
+}
+#contact h1{
+  font-size: 2.2rem; margin-bottom: 25px; color: var(--golden);
+  text-decoration: underline; text-underline-offset: 6px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,.3);
+}
+#contact form{
+  max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px;
+}
+#contact input, #contact textarea{
+  padding: 12px 15px; border: none; border-radius: 10px; outline: none; font-size: 1rem;
+  background: rgba(255,255,255,.95); color: #111827;
+}
+#contact input:focus, #contact textarea:focus{
+  border: 2px solid var(--golden); box-shadow: 0 0 10px var(--golden);
+}
+#contact button{
+  background: var(--golden); color: #0a2a1a; font-size: 1.05rem;
+  padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-weight: 800;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+#contact button:hover{
+  background: var(--torquise); color: var(--white); transform: translateY(-2px);
+}
+
+/* ================================
+   FOOTER
+==================================*/
+footer{
+  padding: 28px 20px; text-align: center; background: #0b0b0b; color: #d1d1d1;
+}
+
+/* ================================
+   CHAT WIDGET (AI)
+==================================*/
+#chatFab{
+  position: fixed; right: 18px; bottom: 18px;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--golden), var(--sand));
+  color: #111827; border: none; cursor: pointer; z-index: 60;
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+}
+
+#chatWidget{
+  position: fixed; right: 18px; bottom: 86px; width: min(92vw, 380px); height: 520px;
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+  box-shadow: 0 22px 50px rgba(0,0,0,.45);
+  z-index: 60;
+}
+.hidden{ display: none; }
+
+.chat-header{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding: 10px 12px; background: rgba(255,255,255,.06);
+  border-bottom: 1px solid var(--border);
+}
+.chat-messages{
+  height: calc(520px - 52px - 58px);
+  padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
+}
+.chat-input{
+  display:flex; gap:8px; padding: 10px; border-top: 1px solid var(--border); background: rgba(255,255,255,.04);
+}
+.chat-input input{
+  flex:1; padding:10px 12px; border-radius: 8px; border: 1px solid var(--border);
+  background: rgba(255,255,255,.06); color: var(--text); outline: none;
+}
+.chat-input button{
+  padding: 10px 12px; border-radius: 8px; border:none; cursor:pointer;
+  background: linear-gradient(90deg, var(--sand), var(--golden)); color:#111827; font-weight: 800;
+}
+
+/* Chat message bubbles */
+.msg{ max-width: 85%; padding:10px 12px; border-radius: 12px; }
+.msg.user{ align-self: flex-end; background: rgba(255,255,255,.12); }
+.msg.bot{ align-self: flex-start; background: rgba(0,0,0,.35); }
+body.theme-light .msg.bot{ background: rgba(0,0,0,.08); }
+
+/* ================================
+   RESPONSIVE
+==================================*/
+@media (max-width: 900px){
+  .nav-links { display: none; } /* keep header clean; could add burger later */
+  .hero { height: 86vh; }
+}
+
+/* ================================
+   REDUCED MOTION
+==================================*/
+@media (prefers-reduced-motion: reduce){
+  * { animation: none !important; transition: none !important; }
+}
