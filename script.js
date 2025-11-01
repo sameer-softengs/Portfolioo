@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   /////// CONFIG ///////
-  const CHAT_API_URL = "/api/chat"; // e.g. https://yourdomain.com/api/chat
+  const CHAT_API_URL = "api/chat.js"; // e.g. https://yourdomain.com/api/chat
 
   /////// CLOCK (Asia/Karachi) ///////
   function updatePakistanTime() {
