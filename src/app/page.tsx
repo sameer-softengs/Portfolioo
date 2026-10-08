@@ -16,17 +16,19 @@ export default function Home() {
   const [commandOpen, setCommandOpen] = useState(false);
 
   return (
-    <main>
-      <AnimatedBackground />
-      <Navbar onCommand={() => setCommandOpen(true)} />
-      <CommandPalette open={commandOpen} setOpen={setCommandOpen} />
-      <Hero />
-      <About />
-      <Projects />
-      <Stack />
-      <Journey />
-      <Contact />
+    <>
+      <main>
+        <AnimatedBackground />
+        <Navbar onCommand={() => setCommandOpen(true)} />
+        <CommandPalette open={commandOpen} setOpen={setCommandOpen} />
+        <Hero />
+        <About />
+        <Projects />
+        <Stack />
+        <Journey />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

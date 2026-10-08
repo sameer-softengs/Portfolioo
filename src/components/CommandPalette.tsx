@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useLenis } from "lenis/react";
 import { Search, ArrowUpRight, X } from "lucide-react";
 
 const actions = [
@@ -20,6 +21,8 @@ export default function CommandPalette({
   setOpen: (value: boolean) => void;
 }) {
   const [query, setQuery] = useState("");
+  const lenis = useLenis();
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -41,7 +44,11 @@ export default function CommandPalette({
   const go = (target: string) => {
     setOpen(false);
     setQuery("");
-    setTimeout(() => document.querySelector(target)?.scrollIntoView({ behavior: "smooth" }), 50);
+    if (lenis) {
+      lenis.scrollTo(target, { offset: -96, duration: 1.1, immediate: !!reducedMotion });
+    } else {
+      document.querySelector(target)?.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth" });
+    }
   };
 
   return (

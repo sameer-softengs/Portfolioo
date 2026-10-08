@@ -31,13 +31,20 @@ http://localhost:3000
 
 ## Before publishing
 
-Update these placeholders:
+The canonical origin defaults to `https://portfolioo-xi-woad.vercel.app`.
+Set `SITE_URL` in your hosting environment if the portfolio moves to a new domain.
+For local checks, copy `.env.example` to `.env.local` and change the value as needed.
 
-- GitHub links in `src/components/Hero.tsx` and `Contact.tsx`
-- LinkedIn links in `src/components/Hero.tsx` and `Contact.tsx`
-- `your-email@example.com`
-- Project descriptions in `src/data/portfolio.ts`
-- Metadata in `src/app/layout.tsx`
+SEO includes unique titles and descriptions, Open Graph and Twitter previews,
+an SVG favicon, Person/WebSite/project structured data, `/robots.txt`, and
+`/sitemap.xml`. Vercel preview deployments discourage indexing. Social preview
+images are generated at `/og` without external image or font requests.
+
+Paint Application uses a lightweight SVG cover in the project cards. Its MP4 is
+only referenced on its detail page, uses the cover as a poster, and has
+`preload="none"`, so video data is requested when the visitor plays it.
+
+Update project descriptions in `src/data/portfolio.ts` as more details become available.
 
 ## Deploy
 

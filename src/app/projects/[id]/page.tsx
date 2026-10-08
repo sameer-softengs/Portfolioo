@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ProjectMedia from "@/components/ProjectMedia";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/portfolio";
+import { pageMetadata, serializeJsonLd, siteUrl } from "@/lib/seo";
 
 type ProjectPageProps = {
   params: Promise<{ id: string }>;
@@ -17,12 +18,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { id } = await params;
   const project = projects.find((item) => item.id === id);
 
-  if (!project) return { title: "Project not found" };
+  if (!project) return { title: "Project not found", robots: { index: false, follow: false } };
 
-  return {
-    title: `${project.title} | Muhammad Sameer`,
-    description: project.short,
-  };
+  return pageMetadata(project.title, project.short, `/projects/${project.id}`);
 }
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
@@ -33,6 +31,13 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
   return (
     <main className="container project-detail-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd({
+        "@context": "https://schema.org", "@type": project.repository ? "SoftwareSourceCode" : "CreativeWork",
+        name: project.title, description: project.short, keywords: project.tags.join(", "),
+        creator: { "@type": "Person", name: "Muhammad Sameer", ...(siteUrl ? { "@id": `${siteUrl}/#person` } : {}) },
+        ...(project.repository ? { codeRepository: project.repository, programmingLanguage: project.programmingLanguages, runtimePlatform: project.runtimePlatform } : {}),
+        ...(siteUrl ? { url: `${siteUrl}/projects/${project.id}`, image: `${siteUrl}${project.image}` } : {}),
+      }) }} />
       <Link href="/projects" className="detail-back-link">
         <ArrowLeft size={17} /> All projects
       </Link>
@@ -51,13 +56,10 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         </header>
 
         <div className="project-detail-visual">
-          <Image
-            src={project.image}
-            alt={project.imageAlt}
-            fill
-            priority
+          <ProjectMedia
+            project={project}
+            detail
             sizes="(max-width: 760px) calc(100vw - 64px), 520px"
-            className="project-image detail-project-image"
           />
         </div>
       </section>
@@ -71,16 +73,16 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         ))}
       </div>
 
-      <div className="project-case-study">
-        <section>
+      {(project.problem || project.solution || project.features.length > 0) && <div className="project-case-study">
+        {project.problem && <section>
           <h2>Problem</h2>
           <p>{project.problem}</p>
-        </section>
-        <section>
-          <h2>Solution</h2>
+        </section>}
+        {project.solution && <section>
+          <h2>{project.implementation ? "Overview" : "Solution"}</h2>
           <p>{project.solution}</p>
-        </section>
-        <section className="project-features">
+        </section>}
+        {project.features.length > 0 && <section className="project-features">
           <h2>Key features</h2>
           <div className="project-feature-grid">
             {project.features.map((feature, index) => (
@@ -90,12 +92,43 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </section>}
+        {project.technicalStack && <section>
+          <h2>Technology stack</h2>
+          <dl className="project-facts">
+            {project.technicalStack.map((item) => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
+          </dl>
+        </section>}
+        {project.organization && <section>
+          <h2>Project structure</h2>
+          <dl className="project-facts project-file-list">
+            {project.organization.map((item) => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
+          </dl>
+        </section>}
+        {project.implementation && <section className="project-implementation">
+          <h2>How it works</h2>
+          <div className="project-implementation-grid">
+            {project.implementation.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}
+          </div>
+        </section>}
+        {project.runInstructions && <section className="project-run-section">
+          <h2>Run locally</h2>
+          <p>{project.runPrerequisites}</p>
+          <pre className="project-run-commands"><code>{project.runCommands}</code></pre>
+          <ol className="project-run-steps">{project.runInstructions.map((step) => <li key={step}>{step}</li>)}</ol>
+        </section>}
+        {project.skills && <section className="project-skills-section">
+          <h2>Engineering skills</h2>
+          <div className="detail-tags">{project.skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
+        </section>}
+      </div>}
 
-      <Link href="/projects" className="btn btn-secondary detail-all-projects">
-        Explore more projects <ArrowUpRight size={18} />
-      </Link>
+      <div className="project-detail-actions">
+        {project.repository && <a href={project.repository} className="btn btn-primary" target="_blank" rel="noreferrer">View source on GitHub <ArrowUpRight size={18} aria-hidden="true" /></a>}
+        <Link href="/projects" className="btn btn-secondary detail-all-projects">
+          Explore more projects <ArrowUpRight size={18} />
+        </Link>
+      </div>
     </main>
   );
 }

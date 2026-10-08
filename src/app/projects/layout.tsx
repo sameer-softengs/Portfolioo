@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import Footer from "@/components/Footer";
 
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +19,7 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
         </div>
       </header>
       {children}
+      <Footer />
     </>
   );
 }

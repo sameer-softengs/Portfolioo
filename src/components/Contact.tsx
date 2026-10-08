@@ -1,89 +1,42 @@
-"use client";
-
-import type { FormEvent } from "react";
-import { motion } from "motion/react";
-import { ArrowUpRight, Mail, Send } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Clock3, Mail, Video } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Reveal from "./Reveal";
 
+const bookingUrl = "https://cal.com/muhammad-sameer-ccsqru/project-discussion";
+
 export default function Contact() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = String(form.get("name") ?? "").trim();
-    const email = String(form.get("email") ?? "").trim();
-    const message = String(form.get("message") ?? "").trim();
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-
-    window.location.href = `mailto:muhammadsameer4536@gmail.com?subject=${subject}&body=${body}`;
-  }
-
   return (
     <section id="contact" className="section container contact-section">
       <Reveal>
-        <motion.div
-          className="contact-card contact-layout"
-          whileHover={{ scale: 1.002 }}
-          transition={{ type: "spring", stiffness: 220, damping: 25 }}
-        >
-          <div className="contact-intro">
+        <div className="contact-card contact-compact-layout">
+          <div className="contact-compact-intro">
             <span className="section-number">05 / CONTACT</span>
             <h2>Let&apos;s connect.</h2>
-            <p>
-              Have a project, internship or collaboration in mind? Send a message and
-              I&apos;ll get back to you.
-            </p>
-
+            <p>Have a project or collaboration in mind? Let&apos;s talk about what we can build together.</p>
             <a className="contact-email" href="mailto:muhammadsameer4536@gmail.com">
-              <span><Mail size={18} /></span>
+              <span><Mail size={17} aria-hidden="true" /></span>
               muhammadsameer4536@gmail.com
             </a>
-
-            <div className="contact-actions">
-              <a href="https://linkedin.com/in/sameer-softengs/" target="_blank" rel="noreferrer" className="icon-link" aria-label="LinkedIn">
-                <FaLinkedin size={20} />
-              </a>
-              <a href="https://github.com/sameer-softengs" target="_blank" rel="noreferrer" className="icon-link" aria-label="GitHub">
-                <FaGithub size={20} />
-              </a>
+            <div className="contact-social-links">
+              <a href="https://github.com/sameer-softengs" target="_blank" rel="noreferrer"><FaGithub size={17} aria-hidden="true" /> GitHub <ArrowUpRight size={14} aria-hidden="true" /></a>
+              <a href="https://linkedin.com/in/sameer-softengs/" target="_blank" rel="noreferrer"><FaLinkedin size={17} aria-hidden="true" /> LinkedIn <ArrowUpRight size={14} aria-hidden="true" /></a>
             </div>
           </div>
-
-          <div className="contact-form-panel">
-            <div className="contact-form-heading">
-              <div>
-                <span className="contact-form-kicker">Send a message</span>
-                <h3>Tell me what you&apos;re building.</h3>
-              </div>
-              <ArrowUpRight className="contact-form-arrow" size={22} aria-hidden="true" />
+          <div className="contact-call-card">
+            <span className="contact-call-icon"><CalendarDays size={23} aria-hidden="true" /></span>
+            <span className="contact-form-kicker">PROJECT DISCUSSION</span>
+            <h3>A quick call. A clear next step.</h3>
+            <p>Tell me about your idea, ask questions, and explore how we could work together.</p>
+            <div className="contact-call-details">
+              <span><Clock3 size={15} aria-hidden="true" /> 15 minutes</span>
+              <span><Video size={15} aria-hidden="true" /> Google Meet</span>
             </div>
-
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <label>
-                <span>Name</span>
-                <input name="name" type="text" placeholder="Your name" autoComplete="name" required />
-              </label>
-              <label>
-                <span>Email</span>
-                <input name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
-              </label>
-              <label>
-                <span>Message</span>
-                <textarea name="message" rows={4} placeholder="A short message about your project" required />
-              </label>
-              <button type="submit" className="btn btn-primary contact-submit">
-                Open email <Send size={16} />
-              </button>
-            </form>
-
-            <div className="contact-type-effect" aria-hidden="true">
-              <span>BUILD</span>
-              <span>SHIP</span>
-              <span>ITERATE</span>
-            </div>
+            <a className="btn btn-primary contact-call-button" href={bookingUrl} target="_blank" rel="noreferrer">
+              Book a project call <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <span className="contact-call-note">Choose a time on Cal.com · Opens in a new tab</span>
           </div>
-        </motion.div>
+        </div>
       </Reveal>
     </section>
   );

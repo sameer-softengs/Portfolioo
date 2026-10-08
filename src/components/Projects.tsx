@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-import { projects } from "@/data/portfolio";
+import { featuredProjectIds, projects } from "@/data/portfolio";
 import Reveal from "./Reveal";
+import ProjectMedia from "./ProjectMedia";
 
-const featuredProjects = projects.slice(0, 4);
+const featuredProjects = projects.filter((project) => featuredProjectIds.includes(project.id));
 
 export default function Projects() {
   return (
@@ -15,8 +15,8 @@ export default function Projects() {
       <Reveal>
         <div className="section-head project-section-head">
           <div>
-            <span className="section-number">02 / SELECTED WORK</span>
-            <h2>Selected projects.</h2>
+            <span className="section-number">02 / FEATURED WORK</span>
+            <h2>Featured projects.</h2>
           </div>
         </div>
       </Reveal>
@@ -32,12 +32,9 @@ export default function Projects() {
           >
             <Link href={`/projects/${project.id}`} className="featured-project-card">
               <div className="featured-project-image">
-                <Image
-                  src={project.image}
-                  alt={project.imageAlt}
-                  fill
-                  sizes="(max-width: 760px) calc(100vw - 40px), 50vw"
-                  className="project-image"
+                <ProjectMedia
+                  project={project}
+                  sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1000px) 50vw, 472px"
                 />
               </div>
               <div className="featured-project-content">

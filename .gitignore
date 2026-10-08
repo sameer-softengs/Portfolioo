@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/.npm-cache
 
 # Next.js build output
 /.next

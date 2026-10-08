@@ -44,9 +44,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            I build digital
-            <span className="hero-outline"> systems that feel</span>
-            <span className="hero-gradient"> engineered.</span>
+            Muhammad Sameer.
+            <span className="hero-gradient"> full stack developer.</span>
           </motion.h1>
 
           <motion.p
@@ -55,9 +54,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.7 }}
           >
-            I’m Muhammad Sameer, a software engineering student and full stack developer
-            focused on practical products, backend systems, realtime experiences and
-            enterprise workflows.
+            I&apos;m a software engineering student at Bahria University in Karachi. I build
+            web applications, desktop software and backend systems, with projects spanning
+            AI tools, realtime experiences and business workflows.
           </motion.p>
 
           <motion.div

@@ -16,12 +16,14 @@ export default function About() {
       <div className="about-grid">
         <Reveal className="about-big">
           <p>
-            I’m a Software Engineering undergraduate at Bahria University Karachi Campus
-            and a <strong>full stack developer focused on web applications and software systems.</strong>
+            I&apos;m Muhammad Sameer, a Software Engineering undergraduate at Bahria University
+            Karachi Campus, with graduation expected in 2028. I&apos;m a <strong>full stack
+            developer focused on useful web applications and software systems.</strong>
           </p>
           <p>
-            My work covers frontend development, backend services, APIs, databases,
-            authentication, business tools and AI integrations.
+            My projects include a React and Express AI workspace, a Go tool for controlling
+            a desktop from a phone, and a C# drawing application. Across them, I work with
+            frontend interfaces, backend APIs, databases and practical integrations.
           </p>
         </Reveal>
 

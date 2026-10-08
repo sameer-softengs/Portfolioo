@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">Paint Application</title>
+  <desc id="desc">A colorful artist palette representing a C# desktop paint application.</desc>
+  <defs>
+    <radialGradient id="bg"><stop stop-color="#153140"/><stop offset="1" stop-color="#0b1018"/></radialGradient>
+    <linearGradient id="palette" x2="1" y2="1"><stop stop-color="#b1f1ff"/><stop offset="1" stop-color="#8f7cff"/></linearGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h960v480H0z"/>
+  <circle cx="480" cy="200" r="126" fill="none" stroke="#6be5ff" stroke-opacity=".12"/>
+  <circle cx="480" cy="200" r="106" fill="none" stroke="#6be5ff" stroke-opacity=".08"/>
+  <path d="M480 118c-54 0-96 36-96 82 0 46 37 82 84 82h13c15 0 25-13 19-26l-4-8c-5-10 2-21 14-21h18c29 0 48-20 48-47 0-36-42-62-96-62Z" fill="url(#palette)"/>
+  <circle cx="430" cy="190" r="13" fill="#0b1018"/>
+  <circle cx="451" cy="153" r="13" fill="#f68097"/>
+  <circle cx="497" cy="150" r="13" fill="#ffcd75"/>
+  <circle cx="538" cy="177" r="13" fill="#83f7ba"/>
+  <circle cx="440" cy="232" r="12" fill="#3896ff"/>
+  <text x="480" y="345" text-anchor="middle" fill="#f3f6fa" font-family="Arial,sans-serif" font-size="38" font-weight="700">Paint Application</text>
+  <text x="480" y="381" text-anchor="middle" fill="#8d98aa" font-family="Arial,sans-serif" font-size="16" letter-spacing="3">C# · DESKTOP APPLICATION</text>
+</svg>

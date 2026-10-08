@@ -6,14 +6,19 @@ import { Database, MonitorSmartphone, ServerCog } from "lucide-react";
 import {
   SiDotnet,
   SiFirebase,
+  SiGo,
   SiH2Database,
   SiHtml5,
   SiJavascript,
+  SiMongodb,
+  SiMysql,
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
+  SiPython,
   SiReact,
   SiSpringboot,
+  SiSupabase,
   SiTypescript,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
@@ -36,6 +41,8 @@ const technologyGroups = {
     icon: ServerCog,
     technologies: [
       { name: "Node.js", icon: SiNodedotjs },
+      { name: "Python", icon: SiPython },
+      { name: "Go", icon: SiGo },
       { name: "Spring Boot", icon: SiSpringboot },
       { name: ".NET Core", icon: SiDotnet },
       { name: "REST APIs", icon: TbApi },
@@ -46,6 +53,9 @@ const technologyGroups = {
     icon: Database,
     technologies: [
       { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "MySQL", icon: SiMysql },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "Supabase", icon: SiSupabase },
       { name: "Firebase", icon: SiFirebase },
       { name: "H2", icon: SiH2Database },
       { name: "SQL", icon: Database },
@@ -57,6 +67,7 @@ type TechnologyGroup = keyof typeof technologyGroups;
 
 export default function Stack() {
   const [activeGroup, setActiveGroup] = useState<TechnologyGroup>("frontend");
+  const [orbitEnabled, setOrbitEnabled] = useState(false);
   const active = technologyGroups[activeGroup];
   const ActiveIcon = active.icon;
 
@@ -96,7 +107,15 @@ export default function Stack() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08} className="stack-wheel-card">
+        <Reveal delay={0.08} className={`stack-wheel-card${orbitEnabled ? " orbit-motion-enabled" : ""}`}>
+          <button
+            type="button"
+            className="orbit-motion-toggle"
+            aria-pressed={orbitEnabled}
+            onClick={() => setOrbitEnabled((enabled) => !enabled)}
+          >
+            {orbitEnabled ? "Pause orbit" : "Play orbit"}
+          </button>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeGroup}

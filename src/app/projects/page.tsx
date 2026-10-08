@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ProjectMedia from "@/components/ProjectMedia";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/portfolio";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Projects | Muhammad Sameer",
-  description: "Explore all software projects by Muhammad Sameer.",
-};
+export const metadata: Metadata = pageMetadata("Projects",
+  "Explore Muhammad Sameer’s software projects, including C# desktop applications, realtime web tools, AI workspaces and business dashboards.", "/projects");
 
 export default function AllProjectsPage() {
   return (
@@ -15,18 +14,16 @@ export default function AllProjectsPage() {
       <div className="projects-page-intro">
         <span className="section-number">PROJECT ARCHIVE</span>
         <h1>All projects.</h1>
+        <p>Explore Muhammad Sameer&apos;s web, desktop and backend projects, from AI tools and realtime utilities to business applications.</p>
       </div>
 
       <div className="all-projects-grid">
         {projects.map((project) => (
           <Link key={project.id} href={`/projects/${project.id}`} className="gallery-project-card">
             <div className="gallery-project-image">
-              <Image
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1050px) 50vw, 33vw"
-                className="project-image"
+              <ProjectMedia
+                project={project}
+                sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 980px) 50vw, 308px"
               />
             </div>
             <div className="gallery-project-title">
