@@ -1,75 +1,81 @@
 # Sameer Portfolio
 
-A dark, modern developer portfolio built with Next.js 16, React 19, TypeScript and Motion.
+A dark, modern developer portfolio built with Next.js, React, TypeScript, and Motion. The site presents professional experience, selected projects, technical strengths, and contact information through a responsive, animated interface.
 
 ## Features
 
 - Responsive single-page developer portfolio
-- Animated hero section
-- Floating ambient background
-- Scroll reveal transitions
-- Animated project cards
-- Command palette (`Ctrl/Cmd + K`)
+- Animated hero section and ambient background
+- Scroll-reveal transitions
+- Animated project cards and project detail pages
+- Command palette with `Ctrl/Cmd + K`
 - Mobile navigation
-- Technology stack section
-- Engineering timeline
-- Contact CTA
+- Technology stack and engineering timeline sections
+- Contact call-to-action
 - Reduced-motion accessibility support
+- SEO metadata, Open Graph/Twitter previews, structured data, robots, and sitemap support
 
-## Run locally
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Motion
+- Vercel-ready deployment
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
 
 ```bash
+git clone https://github.com/sameer-softengs/Portfolioo.git
+cd Portfolioo
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Open:
+Open `http://localhost:3000` in your browser.
 
-```text
-http://localhost:3000
+## Configuration
+
+The canonical site URL defaults to `https://portfolioo-xi-woad.vercel.app`. For local configuration, copy `.env.example` to `.env.local` and update `SITE_URL` when needed.
+
+Do not commit private credentials or deployment secrets.
+
+## Production
+
+```bash
+npm run build
+npm start
 ```
-
-## Before publishing
-
-The canonical origin defaults to `https://portfolioo-xi-woad.vercel.app`.
-Set `SITE_URL` in your hosting environment if the portfolio moves to a new domain.
-For local checks, copy `.env.example` to `.env.local` and change the value as needed.
-
-SEO includes unique titles and descriptions, Open Graph and Twitter previews,
-an SVG favicon, Person/WebSite/project structured data, `/robots.txt`, and
-`/sitemap.xml`. Vercel preview deployments discourage indexing. Social preview
-images are generated at `/og` without external image or font requests.
-
-Paint Application uses a lightweight SVG cover in the project cards. Its MP4 is
-only referenced on its detail page, uses the cover as a poster, and has
-`preload="none"`, so video data is requested when the visitor plays it.
-
-Update project descriptions in `src/data/portfolio.ts` as more details become available.
-
-## Deploy
 
 The project can be deployed directly to Vercel after pushing it to GitHub.
 
-## Project structure
+## Project Structure
 
 ```text
 src/
-  app/
-    globals.css
-    layout.tsx
-    page.tsx
-  components/
-    About.tsx
-    AnimatedBackground.tsx
-    CommandPalette.tsx
-    Contact.tsx
-    Footer.tsx
-    Hero.tsx
-    Journey.tsx
-    Navbar.tsx
-    Projects.tsx
-    Reveal.tsx
-    Stack.tsx
-  data/
-    portfolio.ts
+  app/          Application routes, layout, and global styles
+  components/   Reusable portfolio UI components
+  data/         Portfolio content and project data
 ```
+
+Update project descriptions in `src/data/portfolio.ts` as more details become available.
+
+## Accessibility and Performance
+
+The portfolio includes reduced-motion support. Project media is configured to avoid unnecessary loading until visitors request playback.
+
+## License
+
+See the repository for licensing details.
