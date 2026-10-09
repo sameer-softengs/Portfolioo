@@ -53,6 +53,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <div className="detail-tags">
             {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
+          {project.repository && <a className="detail-source-link" href={project.repository} target="_blank" rel="noreferrer">View source on GitHub <ArrowUpRight size={16} aria-hidden="true" /></a>}
         </header>
 
         <div className="project-detail-visual">

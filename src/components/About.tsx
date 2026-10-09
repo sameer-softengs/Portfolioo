@@ -21,9 +21,9 @@ export default function About() {
             developer focused on useful web applications and software systems.</strong>
           </p>
           <p>
-            My projects include a React and Express AI workspace, a Go tool for controlling
-            a desktop from a phone, and a C# drawing application. Across them, I work with
-            frontend interfaces, backend APIs, databases and practical integrations.
+            ReqBot helps teams turn project conversations into requirements. PBS maps Karachi
+            bus routes and simulates fleet updates. I&apos;ve also built a Go phone-to-desktop
+            remote and a C# paint application.
           </p>
         </Reveal>
 

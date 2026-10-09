@@ -54,9 +54,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.7 }}
           >
-            I&apos;m a software engineering student at Bahria University in Karachi. I build
-            web applications, desktop software and backend systems, with projects spanning
-            AI tools, realtime experiences and business workflows.
+            I build web and desktop software in Karachi. Recent work includes a tool for
+            writing software requirements and a bus route tracker with simulated fleet data.
+            I work across React, Java, Node.js, and Go.
           </motion.p>
 
           <motion.div

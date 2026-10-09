@@ -1,6 +1,16 @@
 # Sameer Portfolio
 
-A dark, modern developer portfolio built with Next.js, React, TypeScript, and Motion. The site presents professional experience, selected projects, technical strengths, and contact information through a responsive, animated interface.
+A Next.js portfolio for Muhammad Sameer's web, backend, and desktop projects.
+
+## Featured Projects
+
+- **ReqBot:** guided requirements discovery and reviewable SRS drafts with traceability and diagrams.
+- **PBS Karachi Transit:** route maps and stop information with simulated fleet positions and arrival times.
+- **Dev-AI:** chat, image, and document workflows.
+- **keys:** phone-to-desktop remote control over a local network.
+
+The ReqBot cover comes from its project repository. PBS uses an overview screenshot
+from its local project checkout. PBS fleet positions and ETAs are simulated demo data.
 
 ## Features
 
@@ -27,7 +37,7 @@ A dark, modern developer portfolio built with Next.js, React, TypeScript, and Mo
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20.9+
 - npm
 
 ### Installation

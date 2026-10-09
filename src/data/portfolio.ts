@@ -1,5 +1,95 @@
 const projectEntries = [
   {
+    id: "reqbot",
+    index: "01",
+    title: "ReqBot",
+    short: "A requirements discovery tool that turns a project conversation into a structured software requirements specification.",
+    problem: "Early project ideas often mix confirmed needs, assumptions, and unanswered questions. That makes them hard to estimate or hand to a development team.",
+    solution: "ReqBot asks up to 11 focused questions, then produces an IEEE 830-style SRS draft. It separates confirmed requirements from assumptions and includes testable criteria, traceability, and diagrams for review.",
+    features: [
+      "Guided discovery covering users, workflows, data, integrations, constraints, and success measures",
+      "Functional and non-functional requirements with unique IDs and acceptance criteria",
+      "Requirements traceability matrix and explicit open questions",
+      "Context, use-case, ERD, and sequence diagrams rendered with Mermaid",
+      "Markdown preview and PDF export",
+      "Google sign-in and a developer handoff workflow",
+    ],
+    category: "Requirements Engineering",
+    tags: ["React", "Spring Boot", "Gemini", "MongoDB", "Firebase"],
+    accent: "From idea to specification",
+    metrics: ["11 focused questions", "FR / NFR IDs", "SRS draft & diagrams"],
+    image: "/reqbot.svg",
+    imageAlt: "ReqBot requirements discovery and SRS branding",
+    repository: "https://github.com/sameer-softengs/ReqBot",
+    programmingLanguages: ["Java", "JavaScript", "CSS"],
+    runtimePlatform: "Java 17+ / Spring Boot API and React 19 / Vite frontend",
+    technicalStack: [
+      { label: "Frontend", value: "React 19, Vite, React Markdown, Mermaid, jsPDF, html2canvas" },
+      { label: "Backend", value: "Java 17+, Spring Boot, Gemini API" },
+      { label: "Data and access", value: "MongoDB, Firebase Admin SDK, browser local storage" },
+    ],
+    organization: [
+      { label: "frontend/src/App.jsx", value: "Discovery conversation, SRS generation, and handoff flow" },
+      { label: "frontend/src/components/", value: "SRS preview, login, and developer dashboard" },
+      { label: "backend/src/main/java/com/reqbot/", value: "API controllers, services, models, and database access" },
+      { label: "backend/src/main/resources/reqbot-prompt.txt", value: "Question plan and SRS document structure" },
+    ],
+    implementation: [
+      { title: "Focused discovery", text: "The backend uses a question plan to learn the product's purpose, users, workflows, data, and constraints without repeating known answers." },
+      { title: "Reviewable SRS", text: "The generation prompt requires FR and NFR IDs, acceptance criteria, a traceability matrix, open questions, and four Mermaid diagrams. It labels the result a draft awaiting review." },
+      { title: "Protected API", text: "The React app calls the Spring Boot API. Gemini credentials remain on the server, while Firebase verifies access to protected requests." },
+    ],
+    runPrerequisites: "Requires Java 17+, Node.js, MongoDB, and configured Gemini and Firebase credentials. Use backend/.env.example and frontend/.env.example as guides.",
+    runCommands: "git clone https://github.com/sameer-softengs/ReqBot.git\ncd ReqBot/backend\n./mvnw spring-boot:run\n\n# In a second terminal, from ReqBot/\ncd frontend\nnpm install\nnpm run dev",
+    runInstructions: ["Configure the backend and frontend environment variables before starting either service.", "Start the Spring Boot backend; on Windows, use mvnw.cmd spring-boot:run.", "Start the Vite frontend in a second terminal."],
+    skills: ["Requirements elicitation", "Java Spring Boot APIs", "React interfaces", "Prompt design", "MongoDB", "Firebase", "Diagram rendering", "PDF export"],
+  },
+  {
+    id: "pbs",
+    index: "02",
+    title: "PBS Karachi Transit",
+    short: "A Karachi bus route explorer with interactive maps, stop information, and simulated live fleet tracking.",
+    problem: "A route directory shows where a bus goes, but it does not make stops, direction, or the journey's progress easy to explore.",
+    solution: "PBS combines route listings and maps with a fleet simulator. Users choose a route, inspect its stops, and follow demo buses with direction, speed, next stop, and estimated arrival updates.",
+    features: [
+      "Karachi route directory with origins, destinations, and available stop data",
+      "Interactive Leaflet maps for route paths, stops, and demo buses",
+      "Socket.IO route subscriptions and fleet updates every 2.5 seconds",
+      "Direction filters, selected bus details, and arrival estimates",
+      "Haversine distance calculations and stop-to-road validation",
+      "Reconnect handling, API rate limits, route validation, and restricted browser origins",
+    ],
+    category: "Transit & Realtime Systems",
+    tags: ["React", "Node.js", "Socket.IO", "Leaflet", "Express"],
+    accent: "Karachi route explorer",
+    metrics: ["20 route entries", "2.5s demo updates", "Maps & ETAs"],
+    image: "/pbs-overview.png",
+    imageAlt: "PBS Karachi transit dashboard showing a route summary and bus tracker link",
+    repository: "https://github.com/sameer-softengs/pbs",
+    programmingLanguages: ["JavaScript", "CSS", "HTML"],
+    runtimePlatform: "React 19 / Vite client and Node.js / Express server",
+    technicalStack: [
+      { label: "Frontend", value: "React, Vite, React Leaflet, Leaflet" },
+      { label: "Backend", value: "Node.js, Express, Socket.IO" },
+      { label: "Data", value: "Route and stop catalogs, reconstructed road paths, simulated fleet telemetry" },
+    ],
+    organization: [
+      { label: "client/src/App.jsx", value: "Route selection, connection state, and tracking flow" },
+      { label: "client/src/components/", value: "Dashboard, map, route list, and tracking controls" },
+      { label: "server/app.js", value: "REST API, Socket.IO rooms, and fleet update timer" },
+      { label: "server/engine/", value: "Fleet simulation, distances, ETAs, and route paths" },
+    ],
+    implementation: [
+      { title: "Route-scoped updates", text: "The client loads /api/routes, requests a chosen route, and joins its Socket.IO room with subscribe_route. The server sends that room updated fleet_telemetry." },
+      { title: "Fleet simulation", text: "Buses move along reconstructed road paths. The engine changes direction at route endpoints and calculates nearby stops and arrival estimates." },
+      { title: "Defensive API", text: "The server validates route IDs and browser origins, limits requests and socket subscriptions, and sets security headers. The map loads only when needed." },
+    ],
+    runPrerequisites: "Requires Node.js 22.12+ and npm. The backend uses port 4000 and the Vite frontend uses port 5173 by default. Fleet positions and ETAs are simulated demo data.",
+    runCommands: "git clone https://github.com/sameer-softengs/pbs.git\ncd pbs/server\nnpm ci\nnpm start\n\n# In a second terminal, from pbs/\ncd client\nnpm ci\nnpm run dev",
+    runInstructions: ["Start the server first, then the client in a second terminal.", "Open http://localhost:5173 and select a route to start demo tracking.", "Run npm test from server/ to check the API and fleet engine."],
+    skills: ["Realtime subscriptions", "React state management", "REST APIs", "Interactive maps", "Geographic calculations", "Fleet simulation", "Rate limiting", "Backend testing"],
+  },
+  {
     id: "cyber-remote",
     index: "01",
     title: "keys — Remote Control",
@@ -236,12 +326,12 @@ const projectEntries = [
   },
 ];
 
-const projectOrder = ["dev-ai", "cyber-remote", "paint-application", "neoaura", "smart-expense", "audit-pro", "eco-green"];
+const projectOrder = ["reqbot", "pbs", "dev-ai", "cyber-remote", "paint-application", "neoaura", "smart-expense", "audit-pro", "eco-green"];
 export const projects = [...projectEntries]
   .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id))
   .map((project, index) => ({ ...project, index: String(index + 1).padStart(2, "0") }));
 
-export const featuredProjectIds = ["dev-ai", "cyber-remote", "paint-application", "audit-pro"];
+export const featuredProjectIds = ["reqbot", "pbs", "dev-ai", "cyber-remote"];
 
 export const stackGroups = [
   { title: "Frontend", items: ["Next.js", "React", "TypeScript", "JavaScript", "HTML/CSS"] },
@@ -253,8 +343,8 @@ export const stackGroups = [
 export const journey = [
   {
     year: "2026",
-    title: "Focused on product & enterprise engineering",
-    text: "Designed connected platforms, offline capable tools, business workflows and production architectures.",
+    title: "Built ReqBot and PBS",
+    text: "Worked on requirements discovery with Spring Boot and a Karachi transit dashboard with maps and simulated fleet updates.",
   },
   {
     year: "2025",

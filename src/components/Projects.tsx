@@ -41,6 +41,7 @@ export default function Projects() {
                 <div>
                   <span>{project.category}</span>
                   <h3>{project.title}</h3>
+                  <p>{project.short}</p>
                 </div>
                 <ArrowUpRight size={22} />
               </div>

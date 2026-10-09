@@ -6,7 +6,7 @@ import { projects } from "@/data/portfolio";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata("Projects",
-  "Explore Muhammad Sameer’s software projects, including C# desktop applications, realtime web tools, AI workspaces and business dashboards.", "/projects");
+  "Explore ReqBot, the PBS Karachi transit dashboard, and Muhammad Sameer's web, backend, and desktop projects.", "/projects");
 
 export default function AllProjectsPage() {
   return (
@@ -14,7 +14,7 @@ export default function AllProjectsPage() {
       <div className="projects-page-intro">
         <span className="section-number">PROJECT ARCHIVE</span>
         <h1>All projects.</h1>
-        <p>Explore Muhammad Sameer&apos;s web, desktop and backend projects, from AI tools and realtime utilities to business applications.</p>
+        <p>Requirements writing, Karachi bus routes, desktop tools, and web apps. Open a project to see how it works and how to run it.</p>
       </div>
 
       <div className="all-projects-grid">

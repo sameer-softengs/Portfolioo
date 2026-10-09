@@ -1532,6 +1532,19 @@ main.project-detail-page {
   margin-top: 24px;
 }
 
+.detail-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.detail-source-link:hover { text-decoration: underline; }
+.detail-source-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
 .project-detail-page .project-detail-visual {
   width: 100%;
   max-width: 500px;
@@ -2298,6 +2311,17 @@ main.project-detail-page {
   font-size: clamp(19px, 1.8vw, 24px);
   letter-spacing: -.035em;
   font-weight: 560;
+}
+
+.featured-project-content p {
+  display: -webkit-box;
+  margin: 8px 0 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .featured-project-content svg,

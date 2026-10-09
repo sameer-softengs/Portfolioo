@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="brand-mark">S</span>
               <span>sameer.dev</span>
             </Link>
-            <p>Thoughtful interfaces. Reliable systems.<br />Software built with purpose.</p>
+            <p>Web apps, backend services, and desktop tools.<br />Built in Karachi.</p>
             <span className="footer-location">Karachi, Pakistan</span>
           </div>
           <nav className="footer-navigation" aria-label="Footer navigation">

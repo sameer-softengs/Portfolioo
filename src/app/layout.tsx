@@ -5,7 +5,7 @@ import { isPreview, pageMetadata, serializeJsonLd, siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   ...pageMetadata("Muhammad Sameer | Full Stack Developer in Karachi",
-    "Meet Muhammad Sameer, a software engineering student at Bahria University Karachi and full stack developer building web applications, desktop software and backend systems.", "/"),
+    "Muhammad Sameer's portfolio: ReqBot requirements software, a Karachi transit tracker, and web, backend, and desktop projects.", "/"),
   metadataBase: new URL(siteUrl),
   title: { default: "Muhammad Sameer | Full Stack Developer in Karachi", template: "%s | Muhammad Sameer" },
   authors: [{ name: "Muhammad Sameer" }],
