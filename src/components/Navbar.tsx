@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { Menu, X, Command } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-const links = ["about", "work", "stack", "journey", "contact"];
+const links = [
+  { label: "about", href: "#about" },
+  { label: "projects", href: "/projects" },
+  { label: "stack", href: "#stack" },
+  { label: "journey", href: "#journey" },
+  { label: "contact", href: "#contact" },
+];
 
 export default function Navbar({ onCommand }: { onCommand: () => void }) {
   const [open, setOpen] = useState(false);
@@ -32,8 +38,8 @@ export default function Navbar({ onCommand }: { onCommand: () => void }) {
 
         <div className="nav-links">
           {links.map((link) => (
-            <a key={link} href={`#${link}`}>
-              {link}
+            <a key={link.label} href={link.href}>
+              {link.label}
             </a>
           ))}
         </div>
@@ -64,8 +70,8 @@ export default function Navbar({ onCommand }: { onCommand: () => void }) {
             exit={{ opacity: 0, y: -14 }}
           >
             {links.map((link) => (
-              <a key={link} href={`#${link}`} onClick={() => setOpen(false)}>
-                {link}
+              <a key={link.label} href={link.href} onClick={() => setOpen(false)}>
+                {link.label}
               </a>
             ))}
           </motion.div>

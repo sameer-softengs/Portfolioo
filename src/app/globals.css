@@ -2373,9 +2373,13 @@ main.project-detail-page {
   padding-bottom: 100px;
 }
 
+.all-projects-page {
+  padding-top: 118px;
+}
+
 .projects-page-intro {
   max-width: 760px;
-  margin-bottom: 52px;
+  margin-bottom: 30px;
 }
 
 .projects-page-intro h1,
@@ -2396,8 +2400,6 @@ main.project-detail-page {
 }
 
 .all-projects-grid {
-  max-width: 960px;
-  margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -2534,8 +2536,12 @@ main.project-detail-page {
     padding-bottom: 70px;
   }
 
+  .all-projects-page {
+    padding-top: 96px;
+  }
+
   .projects-page-intro {
-    margin-bottom: 34px;
+    margin-bottom: 24px;
   }
 
   .project-detail-header {

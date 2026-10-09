@@ -23,7 +23,7 @@ export default function AllProjectsPage() {
             <div className="gallery-project-image">
               <ProjectMedia
                 project={project}
-                sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 980px) 50vw, 308px"
+                sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 50vw, (max-width: 1400px) 31vw, 380px"
               />
             </div>
             <div className="gallery-project-title">
