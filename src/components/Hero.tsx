@@ -95,15 +95,11 @@ export default function Hero() {
       </div>
 
       <div className="marquee-shell">
-        <motion.div
-          className="marquee"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        >
+        <div className="marquee">
           {[...words, ...words, ...words, ...words].map((word, i) => (
             <span key={`${word}-${i}`}>{word}<b>✦</b></span>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

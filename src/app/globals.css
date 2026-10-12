@@ -123,6 +123,21 @@ a {
   background: var(--cyan);
 }
 
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .orb-one { animation: orb-one-drift 18s ease-in-out infinite; }
+  .orb-two { animation: orb-two-drift 22s ease-in-out infinite; }
+}
+
+@keyframes orb-one-drift {
+  25% { transform: translate(80px, -40px) scale(1.16); }
+  65% { transform: translate(-20px, 30px) scale(.94); }
+}
+
+@keyframes orb-two-drift {
+  25% { transform: translate(-70px, 55px) scale(.9); }
+  65% { transform: translate(20px, -25px) scale(1.12); }
+}
+
 .nav-wrap {
   position: fixed;
   top: 0;
@@ -394,6 +409,11 @@ a {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: .14em;
+  animation: marquee-travel 22s linear infinite;
+}
+
+@keyframes marquee-travel {
+  to { transform: translateX(-50%); }
 }
 
 .marquee span {
@@ -1034,6 +1054,13 @@ a {
 }
 
 @media (max-width: 760px) {
+  .orb,
+  .noise { display: none; }
+
+  .nav-wrap.scrolled,
+  .mobile-menu,
+  .projects-nav { backdrop-filter: none; }
+
   .container {
     width: min(100% - 24px, 1180px);
   }
@@ -1051,7 +1078,6 @@ a {
     display: grid;
     margin: 0 12px 10px;
     background: rgba(9,13,20,.96);
-    backdrop-filter: blur(14px);
     border: 1px solid var(--line);
     border-radius: 16px;
     overflow: hidden;
@@ -1278,7 +1304,7 @@ a {
 }
 
 .orbit-motion-toggle {
-  display: none;
+  display: inline-flex;
   position: absolute;
   top: 16px;
   right: 16px;
@@ -1343,6 +1369,7 @@ a {
   width: 0;
   height: 0;
   animation: technology-spin 24s linear infinite;
+  animation-play-state: paused;
 }
 
 .technology-orbit-item {
@@ -1366,6 +1393,12 @@ a {
   box-shadow: 0 10px 28px rgba(0,0,0,.28);
   transform: translate(-50%, -50%);
   animation: technology-counter-spin 24s linear infinite;
+  animation-play-state: paused;
+}
+
+.orbit-motion-enabled .technology-orbit-track,
+.orbit-motion-enabled .technology-orbit-item > span {
+  animation-play-state: running;
 }
 
 .technology-orbit-item small {
@@ -2030,10 +2063,6 @@ main.project-detail-page {
     transition-duration: .01ms !important;
   }
 
-  .orbit-motion-toggle {
-    display: inline-flex;
-  }
-
   .orbit-motion-enabled .technology-orbit-track,
   .orbit-motion-enabled .technology-orbit-item > span {
     animation-duration: 24s !important;
@@ -2653,6 +2682,7 @@ section[id] { scroll-margin-top: 96px; }
 @media (max-width: 760px) {
   .nav { grid-template-columns: 1fr auto; }
   .projects-nav-inner { height: 68px; }
+  .projects-nav { backdrop-filter: none; }
   .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; padding: 40px 0; }
   .footer-profile { grid-column: 1 / -1; }
   .footer-bottom > span:nth-child(2) { display: none; }

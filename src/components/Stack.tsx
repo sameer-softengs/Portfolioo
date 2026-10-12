@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { Database, MonitorSmartphone, ServerCog } from "lucide-react";
 import {
   SiDotnet,
@@ -67,12 +67,18 @@ type TechnologyGroup = keyof typeof technologyGroups;
 
 export default function Stack() {
   const [activeGroup, setActiveGroup] = useState<TechnologyGroup>("frontend");
-  const [orbitEnabled, setOrbitEnabled] = useState(false);
+  const [orbitEnabled, setOrbitEnabled] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { margin: "120px 0px 120px 0px" });
   const active = technologyGroups[activeGroup];
   const ActiveIcon = active.icon;
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setOrbitEnabled(false);
+  }, []);
+
   return (
-    <section id="stack" className="section container">
+    <section id="stack" ref={sectionRef} className="section container">
       <Reveal>
         <div className="section-head">
           <div>
@@ -107,7 +113,7 @@ export default function Stack() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08} className={`stack-wheel-card${orbitEnabled ? " orbit-motion-enabled" : ""}`}>
+        <Reveal delay={0.08} className={`stack-wheel-card${orbitEnabled && inView ? " orbit-motion-enabled" : ""}`}>
           <button
             type="button"
             className="orbit-motion-toggle"
